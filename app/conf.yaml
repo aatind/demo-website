@@ -5,12 +5,14 @@ metadata:
   name: microservice-demo-email
   namespace: microservice-demo
 spec:
+  replicas: 2
   selector:
     matchLabels:
       app: microservice-demo-email
   template:
     metadata:
       labels:
+    
         app: microservice-demo-email
     spec:
       containers:

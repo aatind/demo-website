@@ -1,0 +1,24 @@
+appName: servicename
+appReplicas: 1
+appImage: gcr.io/google-samples/microservices-demo/servicename
+appVersion: 0.0.0
+containerPort: 8080
+containerEnvVars:
+- name: ENV_VAR_ONE
+  value: "valueone"
+
+livenessProbe:
+periodSeconds: LIVE_VAR_ONE
+execCommand: LIVE_VAR_TWO
+
+readinessProbe:
+periodSeconds: READY_VAR_ONE
+execCommand: READY_VAR_TWO
+
+resources:
+requestCpu: ENV_VAR_FIVE
+requestMemory: ENV_VAR_SIX
+limitCpu: ENV_VAR_SEVEN
+limitsMemory: ENV_VAR_EIGHT
+
+servicePort: 5000

@@ -27,14 +27,14 @@ spec:
 
         livenessProbe:
         {{- range .Values.livenessProbe }}
-        -     periodSeconds: {{ .periodSeconds }}
+              periodSeconds: {{ .periodSeconds }}
               exec: 
                 command: {{ .execCommand }}
         {{- end}} 
 
         readinessProbe:   
         {{- range .Values.readinessProbe }}    
-        -    periodSeconds: {{ .periodSeconds }}
+             periodSeconds: {{ .periodSeconds }}
              exec: 
                 command: {{ .execCommand }}
         {{- end}} 

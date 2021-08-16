@@ -1,0 +1,19 @@
+appName: paymentservice
+appReplicas: 2
+appImage: gcr.io/google-samples/microservices-demo/paymentservice
+appVersion: v0.2.3
+containerPort: 50051
+servicePort: 50051
+containerEnvVars:
+- name: PORT
+  value: "50051"        
+
+probe:
+- periodSeconds: 5
+  execCommand: '["/bin/grpc_health_probe", "-addr=:50051"]'
+
+resources:
+- requestCpu: 100m
+  requestMemory: 64Mi
+  limitsCpu: 200m
+  limitsMemory: 128Mi

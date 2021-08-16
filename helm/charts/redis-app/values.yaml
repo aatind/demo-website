@@ -1,0 +1,18 @@
+appName: microservice-demo-redis
+nameSpace: micro-service
+appReplicas: 2
+appImage: redis
+appVersion: alpine
+containerPort: 6379
+
+probe:
+probePeriodSeconds: PROBE_VAR_1
+probePort: PROBE_VAR_2
+
+resources:
+requestCpu: RESOURCES_VAR_1
+requestMemory: RESOURCES_VAR_2
+limitCpu: RESOURCES_VAR_3
+limitsMemory: RESOURCES_VAR_4
+
+servicePort: 6379

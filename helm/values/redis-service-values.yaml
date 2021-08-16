@@ -1,0 +1,14 @@
+appName: microservice-demo-redis
+appReplicas: 2
+appImage: redis
+appVersion: alpine     
+
+probe:
+- probePeriodSeconds: 5
+  probePort: 6379
+
+resources:
+- requestCpu: 70m
+  requestMemory: 200Mi
+  limitsCpu: 125m
+  limitsMemory: 256Mi

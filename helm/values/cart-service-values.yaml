@@ -1,0 +1,19 @@
+appName: cartservice
+appReplicas: 2
+appImage: gcr.io/google-samples/microservices-demo/cartservice
+appVersion: v0.2.3
+containerPort: 7070
+servicePort: 7070
+containerEnvVars:
+- name: PORT
+  value: "3550"        
+
+probe:
+- periodSeconds: 5
+  execCommand: '["/bin/grpc_health_probe", "-addr=:7070"]'
+
+resources:
+- requestCpu: 200m
+  requestMemory: 64Mi
+  limitsCpu: 300m
+  limitsMemory: 128Mi

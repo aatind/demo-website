@@ -1,0 +1,17 @@
+appName: microservice-demo-ad
+appReplicas: 2
+appImage: gcr.io/google-samples/microservices-demo/adservice
+appVersion: v0.2.3
+containerPort: 9555
+servicePort: 9555
+containerEnvVars:
+- name: PORT
+  value: "9555"
+- name: DISABLE_TRACING
+  value: "1"
+- name: DISABLE_STATS
+  value: "1" 
+
+probe:
+- periodSeconds: 15
+  execCommand: '["/bin/grpc_health_probe", "-addr=:9555"]'

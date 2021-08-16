@@ -26,17 +26,32 @@ spec:
         {{- end}} 
 
         livenessProbe:
-        {{- range .Values.livenessProbe }}
+        {{- range .Values.probe }}
               periodSeconds: {{ .periodSeconds }}
               exec: 
-                command: {{ .execCommand }}
-        {{- end}} 
+                command: {{ .execCommand }}      
+                
+              initialDelaySeconds: {{ .initialDelaySeconds }}
+              httpGet:
+                path: {{ .httpGetPath }}
+                port: {{ .httpPort }}
+                httpHeaders:
+                - name: {{ .httpHeaderName }}
+                  value: {{ .httpHeaderValue }}      
 
-        readinessProbe:   
-        {{- range .Values.readinessProbe }}    
-             periodSeconds: {{ .periodSeconds }}
-             exec: 
-                command: {{ .execCommand }}
+        readinessProbe:
+              periodSeconds: {{ .periodSeconds }}
+              exec: 
+                command: {{ .execCommand }}      
+                
+              initialDelaySeconds: {{ .initialDelaySeconds }}
+              httpGet:
+                path: {{ .httpGetPath }}
+                port: {{ .httpPort }}
+                httpHeaders:
+                - name: {{ .httpHeaderName }}
+                  value: {{ .httpHeaderValue }}
+              
         {{- end}} 
 
         resources:

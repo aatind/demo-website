@@ -1,0 +1,56 @@
+releases:
+  - name: redis
+    chart: charts/redis-app
+    values: 
+      - values/redis-service-values.yaml
+      - appReplicas: "1"
+
+  - name: emailservice
+    chart: charts/web-demo
+    values:
+      - values/email-service-values.yaml
+
+  - name: adservice
+    chart: charts/web-demo
+    values:
+      - values/ad-service-values.yaml
+
+  - name: cartservice
+    chart: charts/web-demo
+    values:
+      - values/cart-service-values.yaml
+
+  - name: checkout-service
+    chart: charts/web-demo
+    values:
+      - values/checkout-service-values.yaml
+
+  - name: currencyservice
+    chart: charts/web-demo
+    values:
+      - values/currency-service-values.yaml
+
+  - name: frontendservice
+    chart: charts/web-demo
+    values:
+      - values/frontend-service-values.yaml
+
+  - name: paymentservice
+    chart: charts/web-demo
+    values:
+      - values/payment-service-values.yaml
+
+  - name: productcatalogservice
+    chart: charts/web-demo
+    values:
+      - values/productcatalog-service-values.yaml
+
+  - name: recommendationservice
+    chart: charts/web-demo
+    values:
+      - values/recommendation-service-values.yaml
+
+  - name: shippingservice
+    chart: charts/web-demo
+    values:
+      - values/shipping-service-values.yaml

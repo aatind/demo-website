@@ -1,0 +1,41 @@
+appName: checkoutservice
+appReplicas: 2
+appImage: gcr.io/google-samples/microservices-demo/checkoutservice
+appVersion: v0.2.3
+containerPort: 5050
+servicePort: 5050
+containerEnvVars:
+- name: PORT
+  value: "5050"
+- name: PRODUCT_CATALOG_SERVICE_ADDR
+  value: "productcatalogservice:3550"
+- name: SHIPPING_SERVICE_ADDR
+  value: "shippingservice:50051"
+- name: PAYMENT_SERVICE_ADDR
+  value: "paymentservice:50051"
+- name: EMAIL_SERVICE_ADDR
+  value: "emailservice:5000"
+- name: CURRENCY_SERVICE_ADDR
+  value: "currencyservice:7000"
+- name: CART_SERVICE_ADDR
+  value: "cartservice:7070"
+- name: DISABLE_STATS
+  value: "1"
+- name: DISABLE_TRACING
+  value: "1"
+- name: DISABLE_PROFILER
+  value: "1"    
+
+livenessProbe:
+- periodSeconds: 5
+  execCommand: '["/bin/grpc_health_probe", "-addr=:5050"]'
+
+readinessProbe:
+- periodSeconds: 5
+  execCommand: '["/bin/grpc_health_probe", "-addr=:5050"]'
+
+resources:
+- requestCpu: 100m
+  requestMemory: 64Mi
+  limitsCpu: 200m
+  limitsMemory: 128Mi

@@ -1,0 +1,19 @@
+appName: productcatalogservice
+appReplicas: 2
+appImage: gcr.io/google-samples/microservices-demo/productcatalogservice
+appVersion: v0.2.3
+containerPort: 3550
+servicePort: 3550
+containerEnvVars:
+- name: PORT
+  value: "3550"        
+
+probe:
+- periodSeconds: 5
+  execCommand: '["/bin/grpc_health_probe", "-addr=:3550"]'
+
+resources:
+- requestCpu: 100m
+  requestMemory: 64Mi
+  limitsCpu: 200m
+  limitsMemory: 128Mi

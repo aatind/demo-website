@@ -30,7 +30,8 @@ spec:
               periodSeconds: {{ .periodSeconds }}
               exec: 
                 command: {{ .execCommand }}      
-                
+        {{- end}} 
+        {{- range .Values.probefrontend }}        
               initialDelaySeconds: {{ .initialDelaySeconds }}
               httpGet:
                 path: {{ .httpGetPath }}
@@ -38,22 +39,22 @@ spec:
                 httpHeaders:
                 - name: {{ .httpHeaderName }}
                   value: {{ .httpHeaderValue }}      
-
+        {{- end}} 
         readinessProbe:
+        {{- range .Values.probe }}
               periodSeconds: {{ .periodSeconds }}
               exec: 
                 command: {{ .execCommand }}      
-                
+        {{- end}}       
+        {{- range .Values.probeFrontend }}        
               initialDelaySeconds: {{ .initialDelaySeconds }}
               httpGet:
                 path: {{ .httpGetPath }}
                 port: {{ .httpPort }}
                 httpHeaders:
                 - name: {{ .httpHeaderName }}
-                  value: {{ .httpHeaderValue }}
-              
+                  value: {{ .httpHeaderValue }}              
         {{- end}} 
-
         resources:
         {{- range .Values.resources }}
           requests:

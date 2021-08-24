@@ -1,5 +1,5 @@
-appName: cartservice
-appReplicas: 2
+appName: currencyservice
+appReplicas: 1
 appImage: gcr.io/google-samples/microservices-demo/currencyservice
 appVersion: v0.2.3
 containerPort: 7000

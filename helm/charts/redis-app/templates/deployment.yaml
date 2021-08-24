@@ -7,22 +7,24 @@ spec:
   replicas: {{ .Values.appReplicas }}
   selector:
     matchLabels:
-      {{ .Values.appName }}
+      app: {{ .Values.appName }}
   template:
     metadata:          
       labels:    
-        app: {{ .Values.appName }}
+         app: {{ .Values.appName }}
     spec:
       containers:
       - name: {{ .Values.appName }}
         image: "{{ .Values.appImage }}:{{ .Values.appVersion }}"
         ports:
         - containerPort: {{ .Values.containerPort }}
+
         readinessProbe:
         {{- range .Values.probe }}
           periodSeconds: {{ .probePeriodSeconds }}
           tcpSocket:
             port: {{ .probePort}}    
+
         livenessProbe:          
           periodSeconds: {{ .probePeriodSeconds }}
           tcpSocket:

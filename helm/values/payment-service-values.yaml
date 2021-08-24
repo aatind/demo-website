@@ -1,5 +1,5 @@
 appName: paymentservice
-appReplicas: 2
+appReplicas: 1
 appImage: gcr.io/google-samples/microservices-demo/paymentservice
 appVersion: v0.2.3
 containerPort: 50051

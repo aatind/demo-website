@@ -1,5 +1,5 @@
-appName: cartservice
-appReplicas: 2
+appName: shippingservice
+appReplicas: 1
 appImage: gcr.io/google-samples/microservices-demo/shippingservice
 appVersion: v0.2.3
 containerPort: 50051
